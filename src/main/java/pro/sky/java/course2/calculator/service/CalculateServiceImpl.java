@@ -30,7 +30,7 @@ public class CalculateServiceImpl implements CalculateService {
             return num1 + " / " + num2 + " = " + (num1 / num2);
 
         } else {
-            return "Division by 0 is forbidden";
+            return "Division by 0 is not allow";
         }
     }
 }
