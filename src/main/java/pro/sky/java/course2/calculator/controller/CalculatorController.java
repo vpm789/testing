@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 import pro.sky.java.course2.calculator.service.CalculateService;
 
 @RestController
-public class Controller {
+public class CalculatorController {
     private CalculateService calculateService;
 
-    public Controller(CalculateService calculateService) {
+    public CalculatorController(CalculateService calculateService) {
         this.calculateService = calculateService;
     }
 
@@ -19,18 +19,23 @@ public class Controller {
     }
     @GetMapping(path = "/calculator/plus")
     public String calculatePlus(@RequestParam("num1") int num1, @RequestParam("num2") int num2) {
-        return calculateService.calculatePlus(num1, num2) ;
+        return num1 + " + " + num2 + " = " + calculateService.calculatePlus(num1, num2);
     }
     @GetMapping(path = "/calculator/minus")
     public String calculateMinus(@RequestParam("num1") int num1, @RequestParam("num2") int num2) {
-        return calculateService.calculateMinus(num1, num2) ;
+        return num1 + " - " + num2 + " = " + calculateService.calculateMinus(num1, num2) ;
     }
     @GetMapping(path = "/calculator/multiply")
     public String calculateMultiply(@RequestParam("num1") int num1, @RequestParam("num2") int num2) {
-        return calculateService.calculateMultiply(num1, num2) ;
+        return num1 + " * " + num2 + " = " + calculateService.calculateMultiply(num1, num2) ;
     }
     @GetMapping(path = "/calculator/divide")
     public String calculateDivide(@RequestParam("num1") int num1, @RequestParam("num2") int num2) {
-        return calculateService.calculateDivide(num1, num2) ;
+        if (num2 != 0) {
+            return num1 + " / " + num2 + " = " + calculateService.calculateDivide(num1, num2);
+
+        } else {
+            return "Division by 0 is not allow";
+        }
     }
 }
