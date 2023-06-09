@@ -26,6 +26,10 @@ public class CalculateServiceImpl implements CalculateService {
 
     @Override
     public int calculateDivide(int num1, int num2) {
-        return num1 / num2;
+        if (num2 == 0) {
+            throw new IllegalArgumentException("Division by 0 is not allow");
+        } else {
+            return num1 / num2;
+        }
     }
 }
